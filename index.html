@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Шагаем к речи - кабинет коррекции и развития детей (демо главной)</title>
+<meta name="description" content="Демо главной страницы: логопедическая, дефектологическая и нейропсихологическая помощь детям 2-12 лет в Москве. Запись на диагностику.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#fbf6ee;--paper:#fffdf9;--ink:#1d2b2a;--muted:#5d6b69;--teal:#1f5a54;--teal-2:#2f7a71;--mint:#dcefe9;
+  --coral:#e5714f;--coral-2:#f3a184;--sun:#f2c35b;--sky:#cfe3f3;--line:#e9e0d2;--r:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 17px/1.6 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Lora,Georgia,serif;font-weight:600;letter-spacing:-.01em;margin:0}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.btn{display:inline-flex;align-items:center;gap:10px;border:0;border-radius:999px;padding:16px 26px;font:700 16px Manrope,sans-serif;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s}
+.btn-main{background:var(--coral);color:#fff;box-shadow:0 10px 24px -10px rgba(229,113,79,.8)}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 16px 30px -12px rgba(229,113,79,.9)}
+.btn-ghost{background:transparent;color:var(--teal);box-shadow:inset 0 0 0 2px var(--teal)}
+.btn-ghost:hover{background:var(--teal);color:#fff}
+.tag{display:inline-block;font:700 12px Manrope;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-2)}
+
+/* шапка */
+header{position:sticky;top:0;z-index:20;background:rgba(251,246,238,.86);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
+header.scrolled{border-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:20px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-mark{width:42px;height:42px}
+.logo b{font:700 19px/1 Lora,serif;display:block}
+.logo small{display:block;font-size:12px;line-height:1.3;color:var(--muted);margin-top:3px}
+.menu{display:flex;gap:26px;font-weight:600;font-size:15px}
+.menu a{text-decoration:none;opacity:.8}
+.menu a:hover{opacity:1;color:var(--coral)}
+.nav .btn{padding:12px 20px;font-size:15px}
+@media(max-width:900px){.menu{display:none}}
+
+/* hero */
+.hero{position:relative;padding:56px 0 40px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(38px,5.4vw,66px);line-height:1.04}
+.hero h1 em{font-style:italic;color:var(--coral)}
+.hero p.lead{font-size:19px;color:var(--muted);max-width:520px;margin:22px 0 30px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.hero-note{display:flex;gap:22px;margin-top:34px;flex-wrap:wrap}
+.hero-note div{font-size:14px;color:var(--muted)}
+.hero-note b{display:block;font:700 24px Lora,serif;color:var(--ink)}
+.path-box{position:relative;aspect-ratio:1/1.02;border-radius:36px;background:linear-gradient(160deg,#fff 0%,#f4ede1 100%);box-shadow:0 30px 60px -40px rgba(31,90,84,.45);overflow:hidden}
+.path-box svg{position:absolute;inset:0;width:100%;height:100%}
+#trail{stroke-dasharray:6 14;stroke-dashoffset:0}
+.bubble{position:absolute;padding:10px 16px;border-radius:18px 18px 18px 4px;background:#fff;font:600 15px Manrope;box-shadow:0 10px 24px -14px rgba(0,0,0,.35);opacity:0;transform:translateY(10px) scale(.9);transition:opacity .5s,transform .5s cubic-bezier(.2,.8,.2,1.2)}
+.bubble.on{opacity:1;transform:none}
+.b1{left:10%;bottom:16%;background:var(--mint)}
+.b2{left:34%;bottom:40%;background:#fff3c9}
+.b3{left:46%;top:30%;background:var(--sky)}
+.b4{right:7%;top:9%;background:var(--coral);color:#fff;font-size:17px}
+.step{fill:var(--teal);opacity:0;transition:opacity .4s}
+.step.on{opacity:.85}
+
+/* блоки */
+section{padding:84px 0}
+.head{max-width:720px;margin-bottom:40px}
+.head h2{font-size:clamp(30px,3.6vw,46px);line-height:1.1;margin-top:10px}
+.head p{color:var(--muted);margin:14px 0 0}
+
+/* что беспокоит */
+.worry{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.worry-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:11px 16px;font:600 15px Manrope;cursor:pointer;transition:all .2s;color:var(--ink)}
+.chip:hover{border-color:var(--teal-2)}
+.chip.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.route{position:sticky;top:100px;background:var(--teal);color:#fff;border-radius:28px;padding:30px;min-height:330px;overflow:hidden}
+.route h3{font-size:26px}
+.route .muted{color:#bfe0da;font-size:15px}
+.route ol{list-style:none;padding:0;margin:20px 0 24px;counter-reset:s}
+.route li{counter-increment:s;display:flex;gap:14px;align-items:flex-start;padding:10px 0;border-bottom:1px dashed rgba(255,255,255,.2);opacity:0;transform:translateX(-12px);animation:in .45s forwards}
+.route li::before{content:counter(s);flex:none;width:30px;height:30px;border-radius:50%;background:var(--sun);color:var(--ink);font:800 14px/30px Manrope;text-align:center}
+@keyframes in{to{opacity:1;transform:none}}
+.route .btn-main{background:var(--sun);color:var(--ink);box-shadow:none}
+
+/* услуги */
+.svc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.card h3{hyphens:auto;overflow-wrap:anywhere}
+.card.hint{grid-column:span 3;background:var(--sun);border:0;justify-content:center}
+.card.hint h3{font:600 24px/1.25 Lora,serif}
+@media(max-width:560px){.svc{grid-template-columns:1fr}.card.big,.card.hint{grid-column:auto}.card{min-height:0}}
+.card{background:#fff;border-radius:var(--r);padding:24px;border:1px solid var(--line);position:relative;transition:transform .25s,box-shadow .25s;text-decoration:none;display:flex;flex-direction:column;gap:10px;min-height:190px}
+.card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -26px rgba(31,90,84,.55)}
+.card .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:var(--mint)}
+.card .ic svg{width:26px;height:26px;stroke:var(--teal);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font:700 17px/1.3 Manrope}
+.card .age{font-size:13px;color:var(--muted);margin-top:auto}
+.card .more{position:absolute;right:20px;top:24px;font-weight:800;color:var(--coral);opacity:0;transform:translateX(-6px);transition:.25s}
+.card:hover .more{opacity:1;transform:none}
+.card.big{grid-column:span 2;background:var(--teal);color:#fff;border:0}
+.card.big .ic{background:rgba(255,255,255,.14)}
+.card.big .ic svg{stroke:#fff}
+.card.big .age{color:#bfe0da}
+@media(max-width:980px){.svc{grid-template-columns:repeat(2,minmax(0,1fr))}.card.hint{grid-column:span 1}.worry-grid,.hero-grid{grid-template-columns:1fr}.route{position:static}}
+
+/* этапы */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative}
+.steps::before{content:"";position:absolute;left:4%;right:4%;top:34px;height:3px;background:repeating-linear-gradient(90deg,var(--coral-2) 0 10px,transparent 10px 20px)}
+.st{position:relative;text-align:left}
+.st .n{width:68px;height:68px;border-radius:50%;background:#fff;border:3px solid var(--coral);display:grid;place-items:center;font:700 26px Lora;color:var(--coral);margin-bottom:18px;position:relative;z-index:1;transition:background .4s,color .4s}
+.st.on .n{background:var(--coral);color:#fff}
+.st h3{font:700 18px Manrope;margin-bottom:6px}
+.st p{color:var(--muted);font-size:15px;margin:0}
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr}.steps::before{display:none}}
+
+/* команда */
+.team{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:18px}
+.person{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.ph{aspect-ratio:4/3.4;background:linear-gradient(150deg,var(--mint),#f6e7d6);position:relative;display:grid;place-items:center}
+.ph span{font:600 14px Manrope;color:var(--teal);background:rgba(255,255,255,.75);padding:8px 14px;border-radius:999px}
+.person .tx{padding:20px}
+.person h3{font:700 18px Manrope}
+.person p{margin:6px 0 0;color:var(--muted);font-size:15px}
+.person.lead .ph{aspect-ratio:4/3.9;background:linear-gradient(150deg,#f9d9c9,#f2ead7)}
+@media(max-width:900px){.team{grid-template-columns:1fr}}
+
+/* прайс + отзывы */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.price{background:#fff;border:1px solid var(--line);border-radius:28px;padding:10px 28px}
+.row{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border:0}
+.row b{font-weight:700;white-space:nowrap}
+.rev{background:var(--teal);color:#fff;border-radius:28px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;gap:22px}
+.rev q{font:500 italic 22px/1.45 Lora,serif;quotes:"«" "»"}
+.rev .who{color:#bfe0da;font-size:14px}
+.stars{color:var(--sun);letter-spacing:3px}
+.ya{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.12);padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:700;font-size:14px;width:max-content}
+@media(max-width:900px){.two{grid-template-columns:1fr}}
+
+/* FAQ */
+details{background:#fff;border:1px solid var(--line);border-radius:18px;padding:0 24px;margin-bottom:10px}
+summary{list-style:none;cursor:pointer;padding:20px 0;font-weight:700;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:"+";font:400 26px/1 Manrope;color:var(--coral);transition:transform .3s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:0 0 20px;color:var(--muted)}
+
+/* запись */
+.cta{background:var(--ink);color:#fff;border-radius:36px;padding:56px;display:grid;grid-template-columns:1fr 1fr;gap:40px;position:relative;overflow:hidden}
+.cta h2{font-size:clamp(30px,3.4vw,44px)}
+.cta p{color:#b8c4c2}
+form{display:grid;gap:12px}
+input,select{width:100%;padding:16px 18px;border-radius:14px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;font:500 16px Manrope}
+input::placeholder{color:#93a3a0}
+select option{color:#000}
+.ok{display:none;background:var(--mint);color:var(--teal);padding:16px;border-radius:14px;font-weight:700}
+@media(max-width:900px){.cta{grid-template-columns:1fr;padding:32px}}
+footer{padding:40px 0 60px;color:var(--muted);font-size:14px}
+.demo-badge{position:fixed;left:16px;bottom:16px;z-index:30;background:#fff;border:1px solid var(--line);padding:9px 14px;border-radius:999px;font:600 12px Manrope;color:var(--muted);box-shadow:0 8px 20px -14px rgba(0,0,0,.4)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="logo" href="#">
+      <svg class="logo-mark" viewBox="0 0 48 48"><circle cx="24" cy="24" r="23" fill="#1f5a54"/><path d="M14 31c3-1 4 1 7 0M21 25c3-1 4 1 7 0M28 19c3-1 4 1 7 0" stroke="#f2c35b" stroke-width="3" stroke-linecap="round" fill="none"/><circle cx="36" cy="13" r="3" fill="#e5714f"/></svg>
+      <span><b>Шагаем к речи</b><small>кабинет коррекции и развития детей</small></span>
+    </a>
+    <nav class="menu"><a href="#uslugi">Услуги</a><a href="#etapy">Как проходит</a><a href="#komanda">Специалисты</a><a href="#ceny">Стоимость</a><a href="#faq">Вопросы</a></nav>
+    <a class="btn btn-main" href="#zapis">Записаться</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="tag">Москва · очно и онлайн · дети 2-12 лет</span>
+      <h1 style="margin-top:14px">От первых слов<br>к <em>уверенному</em><br>общению</h1>
+      <p class="lead">Логопед, дефектолог и нейропсихолог работают одной командой: находим причину нарушения, а не только исправляем звуки. Начинаем с системной диагностики и понятного маршрута.</p>
+      <div class="hero-actions">
+        <a class="btn btn-main" href="#zapis">Записаться на диагностику →</a>
+        <a class="btn btn-ghost" href="#bespokoit">Что беспокоит?</a>
+      </div>
+      <div class="hero-note">
+        <div><b>3 специалиста</b>в одной команде</div>
+        <div><b>11 направлений</b>от запуска речи до школы</div>
+        <div><b>Отчёт</b>о динамике каждый месяц</div>
+      </div>
+    </div>
+    <div class="path-box" aria-hidden="true">
+      <svg viewBox="0 0 500 510" preserveAspectRatio="none">
+        <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#2f7a71"/><stop offset="1" stop-color="#e5714f"/></linearGradient></defs>
+        <circle cx="430" cy="80" r="70" fill="#f2c35b" opacity=".25"/>
+        <path id="trail" d="M40 470 C 140 440, 120 360, 210 330 S 330 300, 300 220 S 360 110, 450 70" stroke="url(#g)" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <g id="steps"></g>
+      </svg>
+      <div class="bubble b1">ма-ма</div>
+      <div class="bubble b2">дай мяч!</div>
+      <div class="bubble b3">а почему небо синее?</div>
+      <div class="bubble b4">Я иду в школу!</div>
+    </div>
+  </div>
+</section>
+
+<section class="worry" id="bespokoit">
+  <div class="wrap worry-grid">
+    <div class="reveal">
+      <span class="tag">Подбор маршрута</span>
+      <div class="head" style="margin-bottom:24px"><h2>Отметьте, что беспокоит</h2><p>Покажем, с чего обычно начинаем. Точный план составит специалист после диагностики.</p></div>
+      <div class="chips" id="chips"></div>
+    </div>
+    <div class="route reveal" id="route">
+      <span class="muted">Ваш предварительный маршрут</span>
+      <h3 style="margin-top:8px">Выберите хотя бы один пункт слева</h3>
+      <p class="muted" style="margin-top:14px">Например: «говорит мало слов» или «трудно с чтением».</p>
+    </div>
+  </div>
+</section>
+
+<section id="uslugi">
+  <div class="wrap">
+    <div class="head reveal"><span class="tag">Направления</span><h2>У каждой услуги - своя страница</h2><p>Показания, возраст, подход, формат занятий, стоимость и специалисты. Удобно и для родителей, и для рекламы в Яндекс Директе.</p></div>
+    <div class="svc" id="svc"></div>
+  </div>
+</section>
+
+<section id="etapy" style="background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="head reveal"><span class="tag">Как проходит работа</span><h2>Четыре шага до результата</h2></div>
+    <div class="steps" id="stepsBlock">
+      <div class="st"><div class="n">1</div><h3>Диагностика</h3><p>Логопедическая и нейропсихологическая - видим и речь, и то, что лежит в её основе.</p></div>
+      <div class="st"><div class="n">2</div><h3>Маршрут</h3><p>Индивидуальный план: какие специалисты, сколько занятий, какие цели на 3 месяца.</p></div>
+      <div class="st"><div class="n">3</div><h3>Занятия</h3><p>Очно в кабинете или онлайн. Руководитель курирует каждый маршрут.</p></div>
+      <div class="st"><div class="n">4</div><h3>Динамика</h3><p>Регулярная оценка, обратная связь и задания для дома.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="komanda">
+  <div class="wrap">
+    <div class="head reveal"><span class="tag">Команда</span><h2>Специалисты, которые работают вместе</h2><p>Здесь будут настоящие фото, образование, опыт и повышение квалификации.</p></div>
+    <div class="team">
+      <div class="person lead reveal"><div class="ph"><span>Фото руководителя</span></div><div class="tx"><h3>Руководитель кабинета</h3><p>Логопед-дефектолог, автор программ, куратор маршрутов</p></div></div>
+      <div class="person reveal"><div class="ph"><span>Фото специалиста</span></div><div class="tx"><h3>Нейропсихолог</h3><p>Диагностика и коррекция внимания, памяти, саморегуляции</p></div></div>
+      <div class="person reveal"><div class="ph"><span>Фото специалиста</span></div><div class="tx"><h3>Логопед</h3><p>Запуск речи, звукопроизношение, миофункциональная коррекция</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="ceny" style="padding-top:0">
+  <div class="wrap two">
+    <div class="reveal">
+      <div class="head" style="margin-bottom:22px"><span class="tag">Стоимость</span><h2>Прайс, который легко менять</h2></div>
+      <div class="price">
+        <div class="row"><span>Логопедическая диагностика</span><b>от ___ ₽</b></div>
+        <div class="row"><span>Нейропсихологическая диагностика</span><b>от ___ ₽</b></div>
+        <div class="row"><span>Занятие с логопедом, 45 мин</span><b>от ___ ₽</b></div>
+        <div class="row"><span>Занятие с дефектологом, 45 мин</span><b>от ___ ₽</b></div>
+        <div class="row"><span>Абонемент 8 занятий</span><b>от ___ ₽</b></div>
+      </div>
+    </div>
+    <div class="rev reveal">
+      <div><div class="stars">★★★★★</div><q style="display:block;margin-top:16px">Здесь будут реальные отзывы родителей - с переходом на Яндекс Карты, чтобы им доверяли.</q></div>
+      <div><div class="who">Блок подтягивает рейтинг и отзывы с карточки организации</div><a class="ya" href="#" onclick="return false" style="margin-top:12px">Все отзывы на Яндекс Картах ↗</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:0">
+  <div class="wrap" style="max-width:860px">
+    <div class="head reveal"><span class="tag">Частые вопросы</span><h2>Родители часто спрашивают</h2></div>
+    <details class="reveal"><summary>С какого возраста можно приходить?</summary><p>С 2 лет. Чем раньше начать, тем проще работать: многие задержки речевого развития хорошо корректируются в раннем возрасте.</p></details>
+    <details class="reveal"><summary>Зачем нейропсихологическая диагностика, если проблема в речи?</summary><p>Речь опирается на внимание, память, моторику и восприятие. Если не учесть эти функции, звуки «ставятся», но не закрепляются.</p></details>
+    <details class="reveal"><summary>Можно ли заниматься онлайн?</summary><p>Да, многие направления доступны онлайн. Формат специалист порекомендует после диагностики.</p></details>
+    <details class="reveal"><summary>Как родители видят результат?</summary><p>Регулярная оценка динамики, обратная связь после занятий и рекомендации для домашней работы.</p></details>
+  </div>
+</section>
+
+<section id="zapis" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div>
+        <span class="tag" style="color:var(--sun)">Первый шаг</span>
+        <h2 style="margin-top:10px">Запишитесь на первичную диагностику</h2>
+        <p>Перезвоним, подберём удобное время и расскажем, как подготовить ребёнка к встрече.</p>
+      </div>
+      <form id="f" onsubmit="event.preventDefault();this.querySelector('.ok').style.display='block';this.querySelector('button').style.display='none'">
+        <input placeholder="Имя родителя" required>
+        <input placeholder="Телефон" type="tel" required>
+        <select><option>Возраст ребёнка</option><option>2-3 года</option><option>4-5 лет</option><option>6-7 лет</option><option>8-12 лет</option></select>
+        <button class="btn btn-main" style="justify-content:center">Записаться на диагностику</button>
+        <div class="ok">Спасибо! Это демо - на настоящем сайте заявка уйдёт администратору.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">Демо-концепт главной страницы для брифа «Шагаем к речи». Тексты частично из брифа, фото и цены - заглушки.</div></footer>
+<div class="demo-badge">Демо-концепт · главная</div>
+
+<script>
+// шаги-следы вдоль тропинки
+const trail=document.getElementById('trail'),g=document.getElementById('steps'),L=trail.getTotalLength(),N=16;
+for(let i=0;i<N;i++){const t=(i+.5)/N,p=trail.getPointAtLength(L*t),p2=trail.getPointAtLength(Math.min(L,L*t+2));const a=Math.atan2(p2.y-p.y,p2.x-p.x)*180/Math.PI;const side=i%2?7:-7;
+  const e=document.createElementNS('http://www.w3.org/2000/svg','ellipse');e.setAttribute('rx',7);e.setAttribute('ry',4.2);e.setAttribute('class','step');
+  e.setAttribute('transform',`translate(${p.x},${p.y}) rotate(${a}) translate(0,${side})`);g.appendChild(e)}
+const steps=[...g.children],bubbles=[...document.querySelectorAll('.bubble')];
+let k=0;function walk(){steps.forEach((s,i)=>s.classList.toggle('on',i<=k));bubbles.forEach((b,i)=>b.classList.toggle('on',k>=[2,6,10,15][i]));k++;if(k>N+8){k=0}setTimeout(walk,k>N?260:240)}
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)walk();else{steps.forEach(s=>s.classList.add('on'));bubbles.forEach(b=>b.classList.add('on'))}
+
+// подбор маршрута
+const W=[
+ ['Говорит мало слов или не говорит',['Логопедическая диагностика','Запуск речи','Занятия с дефектологом']],
+ ['Плохо понимает обращённую речь',['Нейропсихологическая диагностика','Занятия с дефектологом','Логоритмика']],
+ ['Неправильно произносит звуки',['Логопедическая диагностика','Коррекция звукопроизношения','Логопедический массаж']],
+ ['Трудно составить предложение',['Логопедическая диагностика','Занятия с логопедом','Логоритмика']],
+ ['Не может сосредоточиться',['Нейропсихологическая диагностика','Нейропсихологическая коррекция']],
+ ['Скоро в школу',['Логопедическая диагностика','Подготовка к школе']],
+ ['Ошибки в чтении и письме',['Логопедическая диагностика','Коррекция нарушений чтения и письма']],
+ ['Трудности с жеванием и глотанием',['Логопедическая диагностика','Миофункциональная коррекция','Логопедический массаж']]];
+const chips=document.getElementById('chips'),route=document.getElementById('route'),sel=new Set();
+W.forEach((w,i)=>{const b=document.createElement('button');b.className='chip';b.textContent=w[0];b.onclick=()=>{sel.has(i)?sel.delete(i):sel.add(i);b.classList.toggle('on');draw()};chips.appendChild(b)});
+function draw(){if(!sel.size){route.innerHTML='<span class="muted">Ваш предварительный маршрут</span><h3 style="margin-top:8px">Выберите хотя бы один пункт слева</h3>';return}
+ const list=[];sel.forEach(i=>W[i][1].forEach(s=>{if(!list.includes(s))list.push(s)}));list.sort((a,b)=>(b.includes('диагностика'))-(a.includes('диагностика')));
+ route.innerHTML='<span class="muted">Ваш предварительный маршрут</span><h3 style="margin-top:8px">Начнём с диагностики, дальше - по плану</h3><ol>'+list.map((s,i)=>`<li style="animation-delay:${i*90}ms">${s}</li>`).join('')+'</ol><a class="btn btn-main" href="#zapis">Записаться на диагностику</a>'}
+
+// услуги
+const ic={talk:'<path d="M4 6h16v10H9l-5 4z"/>',brain:'<path d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 3 5 3 3 0 0 0 5 1V5a3 3 0 0 0-3-1zM15 4a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-3 5 3 3 0 0 1-5 1"/>',star:'<path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/>',hand:'<path d="M7 11V5a1.5 1.5 0 0 1 3 0v5M10 10V4a1.5 1.5 0 0 1 3 0v6M13 10V5a1.5 1.5 0 0 1 3 0v7M16 9a1.5 1.5 0 0 1 3 0v4a7 7 0 0 1-7 7h-1a6 6 0 0 1-5-3l-2-4a1.5 1.5 0 0 1 2.6-1.5L7 13"/>',book:'<path d="M4 5c3-1 6-1 8 1 2-2 5-2 8-1v14c-3-1-6-1-8 1-2-2-5-2-8-1z M12 6v14"/>',music:'<path d="M9 18V5l11-2v13M9 18a3 3 0 1 1-3-3 3 3 0 0 1 3 3zM20 16a3 3 0 1 1-3-3 3 3 0 0 1 3 3z"/>',school:'<path d="M3 9l9-5 9 5-9 5z M7 11v5c3 2 7 2 10 0v-5"/>'};
+const S=[['Логопедическая диагностика','talk','2-12 лет · 60 мин',1],['Нейропсихологическая диагностика','brain','4-12 лет · 90 мин',1],['Запуск речи','star','2-4 года'],['Коррекция звукопроизношения','talk','4-10 лет'],['Занятия с дефектологом','hand','2-12 лет'],['Нейропсихологическая коррекция','brain','4-12 лет'],['Миофункциональная коррекция','hand','4-12 лет'],['Логопедический массаж','hand','2-10 лет'],['Коррекция нарушений чтения и письма','book','7-12 лет'],['Подготовка к школе','school','5-7 лет'],['Логоритмика','music','3-7 лет']];
+document.getElementById('svc').innerHTML=S.map(s=>`<a class="card reveal ${s[3]?'big':''}" href="#zapis"><span class="more">→</span><span class="ic"><svg viewBox="0 0 24 24">${ic[s[1]]}</svg></span><h3>${s[0]}</h3><span class="age">${s[2]}</span></a>`).join('')+`<a class="card hint reveal" href="#bespokoit"><span class="more" style="opacity:1;transform:none;color:var(--ink)">→</span><h3>Не знаете, с чего начать?</h3><span>Отметьте, что беспокоит, - подскажем маршрут. Или начните с диагностики.</span></a>`;
+
+// появление при скролле
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4)*70+'ms';io.observe(el)});
+const st=[...document.querySelectorAll('.st')];
+new IntersectionObserver(es=>{if(es[0].isIntersecting)st.forEach((s,i)=>setTimeout(()=>s.classList.add('on'),300+i*450))},{threshold:.4}).observe(document.getElementById('stepsBlock'));
+addEventListener('scroll',()=>document.getElementById('hdr').classList.toggle('scrolled',scrollY>10),{passive:true});
+</script>
+</body>
+</html>
