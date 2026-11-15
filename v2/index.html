@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Шагаем к речи - концепт 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f2ff;--paper:#fff;--ink:#1e1b3a;--muted:#5d5a82;--violet:#5b4bdb;--violet-2:#8a7dff;--lilac:#e6e1ff;--peach:#ffb38a;--lime:#c9f27a;--line:#e2ddf7;--r:28px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Onest,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;overflow-x:hidden}
+h1,h2,h3,.u{font-family:Unbounded,Arial,sans-serif;letter-spacing:-.02em;line-height:1.08}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:10px;border:0;cursor:pointer;font:600 17px Onest;padding:16px 26px;border-radius:999px;background:var(--violet);color:#fff;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(91,75,219,.35)}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.demo{background:var(--ink);color:#fff;font-size:13px;text-align:center;padding:7px 12px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font:700 18px Unbounded;text-decoration:none}
+.logo i{width:38px;height:38px;border-radius:12px;background:var(--violet);display:grid;place-items:center;color:#fff;font-style:normal;font-size:18px}
+nav ul{display:flex;gap:26px;list-style:none;font-weight:500}
+nav ul a{text-decoration:none}
+@media(max-width:860px){nav ul{display:none}}
+
+/* HERO: речь растёт */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:40px 0 70px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(36px,5.4vw,66px)}
+.hero h1 em{font-style:normal;color:var(--violet)}
+.hero p.l{font-size:19px;color:var(--muted);margin:20px 0 30px;max-width:520px}
+.hero .acts{display:flex;gap:12px;flex-wrap:wrap}
+.speech{background:var(--paper);border-radius:36px;padding:34px;box-shadow:0 30px 70px rgba(30,27,58,.1);position:relative}
+.speech .age{font:700 14px Unbounded;color:var(--violet);background:var(--lilac);display:inline-block;padding:6px 14px;border-radius:999px}
+.bubble{margin-top:22px;min-height:150px;display:flex;align-items:center}
+.bubble span{font:700 clamp(28px,3.4vw,44px) Unbounded;color:var(--violet);transition:opacity .35s,transform .35s}
+.bubble span.out{opacity:0;transform:translateY(10px)}
+.steps-bar{display:flex;gap:6px;margin-top:22px}
+.steps-bar b{flex:1;height:8px;border-radius:9px;background:var(--lilac);transition:background .4s}
+.steps-bar b.on{background:var(--violet)}
+.speech small{display:block;color:var(--muted);margin-top:14px;font-size:14px}
+.blob{position:absolute;right:-18px;top:-18px;width:74px;height:74px;border-radius:50%;background:var(--lime);display:grid;place-items:center;font:700 13px Unbounded;transform:rotate(12deg);text-align:center;line-height:1.1}
+
+section{padding:70px 0}
+.kick{font:700 13px Unbounded;letter-spacing:.08em;text-transform:uppercase;color:var(--violet)}
+h2{font-size:clamp(28px,3.6vw,46px);margin:10px 0 14px}
+.lead{color:var(--muted);font-size:18px;max-width:640px}
+
+/* ПРОВЕРКА ПО ВОЗРАСТУ */
+.check{background:var(--paper);border-radius:var(--r);padding:34px;margin-top:30px;display:grid;grid-template-columns:.9fr 1.1fr;gap:34px}
+@media(max-width:900px){.check{grid-template-columns:1fr}}
+.ages{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 6px}
+.ages button{border:2px solid var(--line);background:#fff;border-radius:999px;padding:10px 18px;font:600 16px Onest;cursor:pointer;color:var(--ink)}
+.ages button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.skills{display:flex;flex-direction:column;gap:10px}
+.skill{display:flex;gap:14px;align-items:flex-start;background:var(--bg);border-radius:18px;padding:14px 16px;cursor:pointer;border:2px solid transparent;transition:border-color .2s,background .2s;user-select:none}
+.skill .box{width:26px;height:26px;border-radius:8px;border:2px solid var(--violet-2);flex:none;display:grid;place-items:center;color:#fff;font-size:15px;margin-top:1px}
+.skill.on{border-color:var(--violet);background:var(--lilac)}
+.skill.on .box{background:var(--violet);border-color:var(--violet)}
+.res{margin-top:18px;border-radius:20px;padding:20px;background:var(--ink);color:#fff;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.res b{font:700 20px Unbounded;display:block;margin-bottom:4px}
+.res .btn{background:var(--lime);color:var(--ink)}
+.meter{height:10px;border-radius:9px;background:rgba(255,255,255,.15);margin-top:10px;overflow:hidden;width:220px}
+.meter i{display:block;height:100%;background:var(--peach);transition:width .4s}
+.note{font-size:13px;color:var(--muted);margin-top:12px}
+
+/* МАРШРУТ */
+.route{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px;counter-reset:s}
+@media(max-width:900px){.route{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.route{grid-template-columns:1fr}}
+.route div{background:var(--paper);border-radius:var(--r);padding:26px;position:relative}
+.route div::before{counter-increment:s;content:"0" counter(s);font:700 40px Unbounded;color:var(--violet-2);display:block;margin-bottom:12px}
+.route h3{font-size:18px;margin-bottom:8px}
+.route p{color:var(--muted);font-size:15px}
+
+/* УСЛУГИ */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+@media(max-width:900px){.svc{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.svc{grid-template-columns:1fr}}
+.svc a{background:var(--paper);border-radius:22px;padding:22px;text-decoration:none;display:flex;flex-direction:column;gap:8px;border:2px solid transparent;transition:border-color .2s,transform .2s}
+.svc a:hover{border-color:var(--violet);transform:translateY(-3px)}
+.svc .t{font-weight:700;font-size:18px}
+.svc .m{display:flex;justify-content:space-between;color:var(--muted);font-size:14px;margin-top:auto}
+.svc .m b{color:var(--violet)}
+.svc a.hl{background:var(--violet);color:#fff}.svc a.hl .m{color:#ddd8ff}.svc a.hl .m b{color:var(--lime)}
+
+/* КОМАНДА */
+.team{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
+@media(max-width:900px){.team{grid-template-columns:1fr 1fr}}
+.doc{background:var(--paper);border-radius:var(--r);overflow:hidden}
+.doc .ph{aspect-ratio:4/4.4;display:grid;place-items:center;font:700 54px Unbounded;color:#fff}
+.doc div.i{padding:18px}
+.doc b{display:block;font-size:17px}
+.doc span{color:var(--muted);font-size:14px}
+
+/* ОТЗЫВЫ + ЗАПИСЬ */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px}
+@media(max-width:900px){.two{grid-template-columns:1fr}}
+.card{background:var(--paper);border-radius:var(--r);padding:30px}
+.ya{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.ya .score{font:700 48px Unbounded}
+.rev{border-top:1px solid var(--line);padding:16px 0}
+.rev b{display:block}
+.rev p{color:var(--muted);font-size:15px;margin-top:4px}
+form .row{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+form label{font-weight:600;font-size:14px}
+form input,form select{font:500 16px Onest;padding:14px 16px;border-radius:14px;border:2px solid var(--line);background:var(--bg);color:var(--ink)}
+form input:focus,form select:focus{outline:0;border-color:var(--violet)}
+.ok{display:none;background:var(--lime);border-radius:14px;padding:14px;margin-top:12px;font-weight:600}
+footer{padding:40px 0 60px;color:var(--muted);font-size:14px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.bubble span{transition:none}}
+</style>
+</head>
+<body>
+<div class="demo">Концепт 2 для «Шагаем к речи» - демонстрация подхода, тексты и фото будут ваши · <a href="../">Концепт 1</a></div>
+<div class="wrap">
+<nav>
+ <a class="logo" href="#"><i>Ш</i>Шагаем к речи</a>
+ <ul><li><a href="#check">Проверить речь</a></li><li><a href="#uslugi">Услуги</a></li><li><a href="#team">Специалисты</a></li><li><a href="#zapis">Контакты</a></li></ul>
+ <a class="btn" href="#zapis">Записаться</a>
+</nav>
+
+<div class="hero">
+ <div>
+  <h1>От первых слов <em>к уверенному</em> общению</h1>
+  <p class="l">Логопедия, дефектология и нейропсихология для детей 2-12 лет в Москве. Сначала разбираемся в причинах - потом строим маршрут занятий.</p>
+  <div class="acts"><a class="btn" href="#zapis">Записаться на диагностику</a><a class="btn ghost" href="#check">Проверить речь за 1 минуту</a></div>
+ </div>
+ <div class="speech reveal">
+  <div class="blob">шаг<br>за<br>шагом</div>
+  <span class="age" id="hAge">2 года</span>
+  <div class="bubble"><span id="hWord">«ма»</span></div>
+  <div class="steps-bar" id="hBar"><b></b><b></b><b></b><b></b><b></b></div>
+  <small>Так речь растёт, когда всё идёт по плану. Если какой-то шаг «застрял» - мы поможем его пройти.</small>
+ </div>
+</div>
+</div>
+
+<section id="check"><div class="wrap">
+ <div class="kick">Проверка для родителей</div>
+ <h2>Что ребёнок уже умеет?</h2>
+ <p class="lead">Выберите возраст и отметьте, что получается. Это не диагноз, а ориентир - он подскажет, стоит ли прийти на диагностику сейчас.</p>
+ <div class="check reveal">
+  <div>
+   <b>Возраст ребёнка</b>
+   <div class="ages" id="ages"></div>
+   <p class="note">Ориентиры составлены по общим возрастным нормам и будут сверены с вашими специалистами.</p>
+  </div>
+  <div>
+   <div class="skills" id="skills"></div>
+   <div class="res"><div><b id="rT">Отметьте навыки</b><span id="rS">и увидите рекомендацию</span><div class="meter"><i id="rM" style="width:0"></i></div></div><a class="btn" href="#zapis" id="rB">Записаться</a></div>
+  </div>
+ </div>
+</div></section>
+
+<section><div class="wrap">
+ <div class="kick">Как мы работаем</div>
+ <h2>Маршрут, а не набор занятий</h2>
+ <div class="route">
+  <div class="reveal"><h3>Диагностика</h3><p>Логопед и нейропсихолог смотрят не только речь, но и то, что под ней: внимание, память, моторику.</p></div>
+  <div class="reveal"><h3>Маршрут</h3><p>Индивидуальный план: какие специалисты, сколько занятий, что делать дома.</p></div>
+  <div class="reveal"><h3>Занятия</h3><p>Очно в кабинете или онлайн. Куратор-руководитель видит весь путь ребёнка.</p></div>
+  <div class="reveal"><h3>Динамика</h3><p>Регулярная оценка результата и встречи с родителями - вы всегда знаете, где мы сейчас.</p></div>
+ </div>
+</div></section>
+
+<section id="uslugi"><div class="wrap">
+ <div class="kick">11 направлений</div>
+ <h2>Услуги</h2>
+ <p class="lead">У каждого направления своя страница: показания, возраст, подход, формат, стоимость и специалисты.</p>
+ <div class="svc" id="svc"></div>
+</div></section>
+
+<section id="team"><div class="wrap">
+ <div class="kick">Команда</div>
+ <h2>Специалисты</h2>
+ <div class="team">
+  <div class="doc reveal"><div class="ph" style="background:#5b4bdb">РК</div><div class="i"><b>Руководитель кабинета</b><span>логопед-дефектолог, куратор маршрутов</span></div></div>
+  <div class="doc reveal"><div class="ph" style="background:#c14bdb">НП</div><div class="i"><b>Нейропсихолог</b><span>диагностика и коррекция ВПФ</span></div></div>
+  <div class="doc reveal"><div class="ph" style="background:#ff8a5b">ЛГ</div><div class="i"><b>Логопед</b><span>запуск речи, звукопроизношение</span></div></div>
+  <div class="doc reveal"><div class="ph" style="background:#2fa58a">ДФ</div><div class="i"><b>Дефектолог</b><span>подготовка к школе, чтение и письмо</span></div></div>
+ </div>
+ <p class="note">Здесь будут фото, ФИО, образование, опыт и повышение квалификации каждого специалиста.</p>
+</div></section>
+
+<section id="zapis"><div class="wrap">
+ <div class="two">
+  <div class="card reveal">
+   <div class="ya"><div class="score">5,0</div><div><b>Отзывы на Яндекс Картах</b><br><span class="note">рейтинг и отзывы подтягиваются с карточки организации</span></div></div>
+   <div class="rev"><b>Мама Миши, 3 года</b><p>Пример отзыва: «За два месяца сын начал говорить фразами, а главное - мы поняли, что делать дома».</p></div>
+   <div class="rev"><b>Папа Алисы, 6 лет</b><p>Пример отзыва: «Подготовили к школе, ушли проблемы с буквами».</p></div>
+   <a class="btn ghost" href="#">Все отзывы на Яндекс Картах ↗</a>
+  </div>
+  <div class="card reveal">
+   <h2 style="font-size:30px">Запись на диагностику</h2>
+   <p class="lead" style="font-size:16px;margin-bottom:18px">Перезвоним в течение 15 минут в рабочее время и подберём удобный день.</p>
+   <form id="f">
+    <div class="row"><label>Имя родителя</label><input required placeholder="Как к вам обращаться"></div>
+    <div class="row"><label>Телефон</label><input required type="tel" placeholder="+7"></div>
+    <div class="row"><label>Возраст ребёнка</label><select id="fAge"><option>2 года</option><option>3 года</option><option>4 года</option><option>5 лет</option><option>6-7 лет</option><option>8-12 лет</option></select></div>
+    <div class="row"><label>Формат</label><select><option>Очно в кабинете</option><option>Онлайн</option></select></div>
+    <button class="btn" type="submit">Записаться</button>
+    <div class="ok" id="ok">Готово! Это демо - на сайте заявка придёт вам в почту и Telegram.</div>
+   </form>
+  </div>
+ </div>
+</div></section>
+
+<footer><div class="wrap">«Шагаем к речи» · Москва · концепт сайта. Адрес, телефон, карта, фото входа и режим работы - в разделе контактов.</div></footer>
+
+<script>
+// Hero: речь растёт
+const W=[["2 года","«ма»"],["2 года","«мама, дай»"],["3 года","«мама, дай мяч»"],["4 года","«Я хочу красный мяч»"],["5 лет","«Можно я сам расскажу?»"]];
+let k=0;const hw=document.getElementById('hWord'),ha=document.getElementById('hAge'),hb=[...document.querySelectorAll('#hBar b')];
+function tick(){hw.classList.add('out');setTimeout(()=>{k=(k+1)%W.length;ha.textContent=W[k][0];hw.textContent=W[k][1];hb.forEach((b,i)=>b.classList.toggle('on',i<=k));hw.classList.remove('out')},350)}
+hb[0].classList.add('on');if(!matchMedia('(prefers-reduced-motion:reduce)').matches)setInterval(tick,2200);
+
+// Проверка по возрасту
+const N={"2 года":["Говорит 20-50 слов","Понимает простые просьбы без жестов","Показывает части тела","Начинает соединять 2 слова"],
+"3 года":["Говорит фразами из 3-4 слов","Понимает вопросы «где?», «кто?»","Незнакомые понимают половину сказанного","Называет предметы на картинках"],
+"4 года":["Строит сложные предложения","Пересказывает короткую историю","Понимают почти все взрослые","Задаёт много вопросов"],
+"5 лет":["Чисто произносит большинство звуков","Рассказывает по картинке","Использует предлоги и окончания верно","Удерживает внимание 10-15 минут"],
+"6-7 лет":["Все звуки, включая Р и Л","Слышит первый звук в слове","Связно рассказывает о своём дне","Готов сидеть на занятии 20-25 минут"]};
+const ag=document.getElementById('ages'),sk=document.getElementById('skills');let cur="3 года";
+function draw(){ag.innerHTML='';Object.keys(N).forEach(a=>{const b=document.createElement('button');b.textContent=a;b.className=a===cur?'on':'';b.onclick=()=>{cur=a;draw()};ag.appendChild(b)});
+ sk.innerHTML='';N[cur].forEach(s=>{const d=document.createElement('div');d.className='skill';d.innerHTML='<span class="box">✓</span><span>'+s+'</span>';d.onclick=()=>{d.classList.toggle('on');res()};sk.appendChild(d)});res()}
+function res(){const n=sk.querySelectorAll('.on').length,t=N[cur].length,T=document.getElementById('rT'),S=document.getElementById('rS'),M=document.getElementById('rM');
+ M.style.width=(n/t*100)+'%';
+ if(n===t){T.textContent='Всё получается';S.textContent='Приходите на профилактический осмотр раз в полгода'}
+ else if(n>=t-1){T.textContent='Почти всё в норме';S.textContent='Один шаг стоит проверить - диагностика займёт 1 час'}
+ else{T.textContent='Стоит прийти на диагностику';S.textContent='Чем раньше начнём, тем легче догнать возраст'}
+ document.getElementById('fAge').value=cur}
+draw();
+
+// Услуги
+const SV=[["Логопедическая диагностика","2-12 лет","от 3 500 ₽",1],["Нейропсихологическая диагностика","4-12 лет","от 4 500 ₽"],["Запуск речи","2-4 года","от 2 500 ₽"],["Коррекция звукопроизношения","4-10 лет","от 2 200 ₽"],["Занятия с дефектологом","2-12 лет","от 2 500 ₽"],["Нейропсихологическая коррекция","4-12 лет","от 3 000 ₽"],["Миофункциональная коррекция","4-12 лет","от 2 500 ₽"],["Логопедический массаж","2-12 лет","от 1 800 ₽"],["Коррекция чтения и письма","7-12 лет","от 2 500 ₽"],["Подготовка к школе","5-7 лет","от 2 200 ₽"],["Логоритмика","2-6 лет","от 1 500 ₽"]];
+document.getElementById('svc').innerHTML=SV.map(s=>'<a href="#zapis" class="reveal'+(s[3]?' hl':'')+'"><span class="t">'+s[0]+'</span><span class="m"><span>'+s[1]+'</span><b>'+s[2]+'</b></span></a>').join('');
+
+document.getElementById('f').onsubmit=e=>{e.preventDefault();document.getElementById('ok').style.display='block'};
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
